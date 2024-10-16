@@ -1,0 +1,45 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  datasource:
+    url: jdbc:mysql://localhost:3306/contacts
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        enable_lazy_load_no_trans : true
+        jdbc:
+          batch_size: 10
+        order_updates: true
+        order_inserts: true
+
+server :
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+logging:
+  level:
+    root: info
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+      path: "/swagger.html"
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"

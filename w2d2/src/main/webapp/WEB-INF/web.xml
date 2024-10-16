@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+
+<servlet>
+<servlet-name>helloServlet</servlet-name>
+<servlet-class>com.example.w2d2.HelloServlet</servlet-class>
+    <init-param>
+        <param-name>method</param-name>
+        <param-value>redirect</param-value> <!-- forward veya redirect -->
+    </init-param>
+</servlet>
+<servlet>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>com.example.w2d2.Servlet</servlet-class>
+
+</servlet>
+<servlet-mapping>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/servlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>helloServlet</servlet-name>
+<url-pattern>/protected/hello-servlet</url-pattern>
+</servlet-mapping>
+
+        <security-constraint>
+            <web-resource-collection>
+                <web-resource-name>Protected Area</web-resource-name>
+                <url-pattern>/protected/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <role-name>user</role-name>
+            </auth-constraint>
+        </security-constraint>
+
+        <login-config>
+            <auth-method>BASIC</auth-method>
+        </login-config>
+
+        <security-role>
+            <role-name>user</role-name>
+        </security-role>>
+
+
+</web-app>
